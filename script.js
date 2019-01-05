@@ -38,55 +38,79 @@ console.log("howdy partner");
 //   return num * 2;
 // })(5);
 
+// // Problem #3
+// //what will be the alert when you click on button #5?
+// //6 is the answer because the value of i will ++ after the last ineration of the for loop
+// //to fix, you need an IIFY to preserve the value of i for the onClick event for every iteration
+// //you can also just ise let instead of var bcasuse it is block scope and not function scope
+// function createButtons() {
+//   for (var i = 1; i <= 5; i++) {
+//     var body = document.getElementsByTagName("BODY")[0];
+//     var button = document.createElement("BUTTON");
+//     button.innerHTML = "Button " + i;
+//     button.onclick = function() {
+//       alert("This is button " + i);
+//     };
+//     body.appendChild(button);
+//   }
+// }
+
+// createButtons();
+
+// function createButtons() {
+//   for (var i = 1; i <= 5; i++) {
+//     var body = document.getElementsByTagName("BODY")[0];
+//     var button = document.createElement("BUTTON");
+//     button.innerHTML = "button" + i;
+//     (function(num) {
+//       button.onclick = function() {
+//         alert("this is button #" + num);
+//       };
+//     })(i);
+//     body.appendChild(button);
+//   }
+// }
+// createButtons();
+
+// //another solution is to just creat a seperate funtion for the onClick event to preserve the local scope of i at every iteration
+// function createButtons() {
+//   for (var i = 1; i <= 5; i++) {
+//     var body = document.getElementsByTagName("BODY")[0];
+//     var button = document.createElement("BUTTON");
+//     button.innerHTML = "button" + i;
+//     whenButtonClicked(button, i);
+//     body.appendChild(button);
+//   }
+// }
+
+// createButtons();
+
+// function whenButtonClicked(button, num) {
+//   button.onclick = function() {
+//     alert("this is button #" + num);
+//   };
+// }
+
 // Problem #3
-//what will be the alert when you click on button #5?
-//6 is the answer because the value of i will ++ after the last ineration of the for loop
-//to fix, you need an IIFY to preserve the value of i for the onClick event for every iteration
-//you can also just ise let instead of var bcasuse it is block scope and not function scope
-function createButtons() {
-  for (var i = 1; i <= 5; i++) {
-    var body = document.getElementsByTagName("BODY")[0];
-    var button = document.createElement("BUTTON");
-    button.innerHTML = "Button " + i;
-    button.onclick = function() {
-      alert("This is button " + i);
-    };
-    body.appendChild(button);
+//What is a closure, and code out an example of your own
+//it's an inner function that has access to vars of the inner, outer and global function, used to protect local scope
+
+const globalVariable = "global var";
+
+function outterFunc(param1) {
+  const variable1 = "var one";
+
+  function innerFunc(param2) {
+    const variable2 = "var two";
+
+    console.log("globalVariable: ", globalVariable);
+    console.log("variable1: ", variable1);
+    console.log("variable2: ", variable2);
+    console.log("param1: ", param1);
+    console.log("param2: ", param2);
   }
+
+  innerFunc("param one");
 }
 
-createButtons();
-
-function createButtons() {
-  for (var i = 1; i <= 5; i++) {
-    var body = document.getElementsByTagName("BODY")[0];
-    var button = document.createElement("BUTTON");
-    button.innerHTML = "button" + i;
-    (function(num) {
-      button.onclick = function() {
-        alert("this is button #" + num);
-      };
-    })(i);
-    body.appendChild(button);
-  }
-}
-createButtons();
-
-//another solution is to just creat a seperate funtion for the onClick event to preserve the local scope of i at every iteration
-function createButtons() {
-  for (var i = 1; i <= 5; i++) {
-    var body = document.getElementsByTagName("BODY")[0];
-    var button = document.createElement("BUTTON");
-    button.innerHTML = "button" + i;
-    whenButtonClicked(button, i);
-    body.appendChild(button);
-  }
-}
-
-createButtons();
-
-function whenButtonClicked(button, num) {
-  button.onclick = function() {
-    alert("this is button #" + num);
-  };
-}
+outterFunc("param two");
