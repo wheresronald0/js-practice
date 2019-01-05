@@ -91,26 +91,42 @@ console.log("howdy partner");
 //   };
 // }
 
-// Problem #3
-//What is a closure, and code out an example of your own
-//it's an inner function that has access to vars of the inner, outer and global function, used to protect local scope
+// // Problem #3
+// //What is a closure, and code out an example of your own
+// //it's an inner function that has access to vars of the inner, outer and global function, used to protect local scope
 
-const globalVariable = "global var";
+// const globalVariable = "global var";
 
-function outterFunc(param1) {
-  const variable1 = "var one";
+// function outterFunc(param1) {
+//   const variable1 = "var one";
 
-  function innerFunc(param2) {
-    const variable2 = "var two";
+//   function innerFunc(param2) {
+//     const variable2 = "var two";
 
-    console.log("globalVariable: ", globalVariable);
-    console.log("variable1: ", variable1);
-    console.log("variable2: ", variable2);
-    console.log("param1: ", param1);
-    console.log("param2: ", param2);
+//     console.log("globalVariable: ", globalVariable);
+//     console.log("variable1: ", variable1);
+//     console.log("variable2: ", variable2);
+//     console.log("param1: ", param1);
+//     console.log("param2: ", param2);
+//   }
+
+//   innerFunc("param one");
+// }
+
+// outterFunc("param two");
+
+// Problem #4
+//What is the 'this' keyword and how is it used?
+//this referes to local object 'this' is in
+
+let house = {
+  price: 150000,
+  squareFeet: 2000,
+  owner: "John",
+  getPricePerSquareFoot: function() {
+    // return house.price / house.squareFeet;
+    return this.price / this.squareFeet;
   }
+};
 
-  innerFunc("param one");
-}
-
-outterFunc("param two");
+console.log(house.price, house.getPricePerSquareFoot());
