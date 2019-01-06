@@ -40,9 +40,9 @@ console.log("howdy partner");
 
 // // Problem #3
 // //what will be the alert when you click on button #5?
-// //6 is the answer because the value of i will ++ after the last ineration of the for loop
+// //6 is the answer because the value of i will ++ after the last iteration of the for loop
 // //to fix, you need an IIFY to preserve the value of i for the onClick event for every iteration
-// //you can also just ise let instead of var bcasuse it is block scope and not function scope
+// //you can also just ise let instead of var because it is block scope and not function scope
 // function createButtons() {
 //   for (var i = 1; i <= 5; i++) {
 //     var body = document.getElementsByTagName("BODY")[0];
@@ -72,7 +72,7 @@ console.log("howdy partner");
 // }
 // createButtons();
 
-// //another solution is to just creat a seperate funtion for the onClick event to preserve the local scope of i at every iteration
+// //another solution is to just creat a separate function for the onClick event to preserve the local scope of i at every iteration
 // function createButtons() {
 //   for (var i = 1; i <= 5; i++) {
 //     var body = document.getElementsByTagName("BODY")[0];
@@ -91,33 +91,33 @@ console.log("howdy partner");
 //   };
 // }
 
-// // Problem #3
-// //What is a closure, and code out an example of your own
-// //it's an inner function that has access to vars of the inner, outer and global function, used to protect local scope
+// Problem #3
+//What is a closure, and code out an example of your own
+//it's an inner function that has access to vars of the inner, outer and global function, used to protect local scope
 
-// const globalVariable = "global var";
+const globalVariable = "global var";
 
-// function outterFunc(param1) {
-//   const variable1 = "var one";
+function outerFunc(param1) {
+  const variable1 = "var one";
 
-//   function innerFunc(param2) {
-//     const variable2 = "var two";
+  function innerFunc(param2) {
+    const variable2 = "var two";
 
-//     console.log("globalVariable: ", globalVariable);
-//     console.log("variable1: ", variable1);
-//     console.log("variable2: ", variable2);
-//     console.log("param1: ", param1);
-//     console.log("param2: ", param2);
-//   }
+    console.log("globalVariable: ", globalVariable);
+    console.log("variable1: ", variable1);
+    console.log("variable2: ", variable2);
+    console.log("param1: ", param1);
+    console.log("param2: ", param2);
+  }
 
-//   innerFunc("param one");
-// }
+  innerFunc("param one");
+}
 
-// outterFunc("param two");
+outerFunc("param two");
 
 // // Problem #4
 // //What is the 'this' keyword and how is it used?
-// //this referes to local object 'this' is in
+// //this references to local object 'this' is in
 
 // let house = {
 //   price: 150000,
@@ -156,7 +156,7 @@ console.log("howdy partner");
 //   return num1 + num2;
 // };
 
-// //Variables and funcitons are hoisted to the top of the scope in which they are declared in (depending on the key word used (let and const are block scoped and var is function scoped))
+// //Variables and functions are hoisted to the top of the scope in which they are declared in (depending on the key word used (let and const are block scoped and var is function scoped))
 // function getTotal() {
 //   console.log(multiplier);
 //   console.log(total);
@@ -196,7 +196,7 @@ console.log("howdy partner");
 // getTotal();
 
 // // Problem #6
-// //what will print? blue, blue, underfined, underfined
+// //what will print? blue, blue, undefined, undefined
 // this.color = "Red";
 
 // var myCar = {
@@ -241,34 +241,57 @@ console.log("howdy partner");
 // city = "London"; //now returns undefined because it limits the create of global variable
 // console.log(city);
 
-//Problem #10
-//Curry this function:
-// function getProduct(num1, num2) {
-//   return num1 * num2;
+// //Problem #10
+// //Curry this function:
+// // function getProduct(num1, num2) {
+// //   return num1 * num2;
+// // }
+
+// function getProducts(num1) {
+//   return function(num2) {
+//     return num1 * num2;
+//   };
 // }
 
-function getProducts(num1) {
-  return function(num2) {
-    return num1 * num2;
+// getProducts(10)(20);
+
+// //other things you can do with currying
+// function getTravelTime(distance, speed) {
+//   return distance / speed;
+// }
+
+// console.log(getTravelTime(100, 60));
+
+// //curried:
+// function getTravelTime(distance) {
+//   return function(speed) {
+//     return distance / speed;
+//   };
+// }
+
+// const travelTimeToDCtoNYC = getTravelTime(450); // distance doesn't change so this is set
+// console.log(travelTimeToDCtoNYC(60)); // you can then just make adjustments to speed without having to type distance over and over again
+// console.log(travelTimeToDCtoNYC(80));
+
+Problem #11
+//write a function that keeps track for how may times it was called, and returns that number
+
+function myFunc() {
+  let count = 0;
+
+  return function() {
+    count++;
+    return count;
   };
 }
+console.log(myFunc());
 
-getProducts(10)(20);
+const instanceOne = myFunc(); //you have to make an instance for the count to be tracked
+const instanceTwo = myFunc();
 
-//other things you can do with currying
-function getTravelTime(distance, speed) {
-  return distance / speed;
-}
-
-console.log(getTravelTime(100, 60));
-
-//curried:
-function getTravelTime(distance) {
-  return function(speed) {
-    return distance / speed;
-  };
-}
-
-const travelTimeToDCtoNYC = getTravelTime(450); // distance doesn't change so this is set
-console.log(travelTimeToDCtoNYC(60)); // you can then just make adjustments to speed without having to type distance over and over again
-console.log(travelTimeToDCtoNYC(80));
+console.log("instance 1: ", instanceOne());
+console.log("instance 1: ", instanceOne());
+console.log("instance 1: ", instanceOne());
+console.log("instance 2: ", instanceTwo());
+console.log("instance 2: ", instanceTwo());
+console.log("instance 2: ", instanceTwo());
