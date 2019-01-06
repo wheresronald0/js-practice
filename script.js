@@ -230,13 +230,45 @@ console.log("howdy partner");
 
 // logNumber();
 
-Problem #9
-//'use strict' what does it do and why use it
-//enforces stricter parsing and error handling in my code (helps with debugging when you have to var, const, let). Allows us to fail fast and fail loudly
+// //Problem #9
+// //'use strict' what does it do and why use it
+// //enforces stricter parsing and error handling in my code (helps with debugging when you have to var, const, let). Allows us to fail fast and fail loudly
 
-// city = "London"; //declared global variable without using var, let or const
+// // city = "London"; //declared global variable without using var, let or const
+// // console.log(city);
+
+// ("use strict");
+// city = "London"; //now returns undefined because it limits the create of global variable
 // console.log(city);
 
-("use strict");
-city = "London"; //now returns undefined because it limits the create of global variable
-console.log(city);
+//Problem #10
+//Curry this function:
+// function getProduct(num1, num2) {
+//   return num1 * num2;
+// }
+
+function getProducts(num1) {
+  return function(num2) {
+    return num1 * num2;
+  };
+}
+
+getProducts(10)(20);
+
+//other things you can do with currying
+function getTravelTime(distance, speed) {
+  return distance / speed;
+}
+
+console.log(getTravelTime(100, 60));
+
+//curried:
+function getTravelTime(distance) {
+  return function(speed) {
+    return distance / speed;
+  };
+}
+
+const travelTimeToDCtoNYC = getTravelTime(450); // distance doesn't change so this is set
+console.log(travelTimeToDCtoNYC(60)); // you can then just make adjustments to speed without having to type distance over and over again
+console.log(travelTimeToDCtoNYC(80));
