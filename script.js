@@ -133,17 +133,17 @@ console.log("howdy partner");
 
 // // Problem #5
 // //What is variable and function hoisting?
-// //when they are executed or recognized at the top of the scope by the jvasScript compiller (not defined yet though)
+// //when they are executed or recognized at the top of the scope by the javasScript compiller (not defined yet though)
 
 // // let color; //this is a psuedo view of what the compiller sees under the hood, and how it hoists
 
-// // console.log(color); //with be underfined
+// // console.log(color); //with be undefined
 
 // // color = "blue";
 
 // // console.log(color); //will be blue
 
-// //With a function declaration (one that's not assgined to a variable), the entrie function will be hoisted vs a function expression that won't be
+// //With a function declaration (one that's not assigined to a variable), the entire function will be hoisted vs a function expression that won't be
 
 // console.log(foo(4, 4)); //function is hoisted
 // console.log(addingNumbers(4, 4)); //entire function in the function expression not hoister
@@ -214,6 +214,18 @@ console.log("howdy partner");
 
 // myCar.logColor();
 
-Problem #7
-== vs ===
-=== is more strict and compare data types, and == converts data into the same type and then compares
+// Problem #7
+// == vs ===
+// === is more strict and compare data types, and == converts data into the same type and then compares
+
+Problem #8
+// What is logged to the console when the logNumber function is ran?
+//underfined becasue num has been hoisted but no value is assigned yet. If the 2nd num var is deleted, the fuinction will return 50 becuase it will look to the parent for scope
+var num = 50;
+
+function logNumber() {
+  console.log(num);
+  var num = 100;
+}
+
+logNumber();
