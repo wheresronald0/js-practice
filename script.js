@@ -115,18 +115,82 @@ console.log("howdy partner");
 
 // outterFunc("param two");
 
-// Problem #4
-//What is the 'this' keyword and how is it used?
-//this referes to local object 'this' is in
+// // Problem #4
+// //What is the 'this' keyword and how is it used?
+// //this referes to local object 'this' is in
 
-let house = {
-  price: 150000,
-  squareFeet: 2000,
-  owner: "John",
-  getPricePerSquareFoot: function() {
-    // return house.price / house.squareFeet;
-    return this.price / this.squareFeet;
-  }
+// let house = {
+//   price: 150000,
+//   squareFeet: 2000,
+//   owner: "John",
+//   getPricePerSquareFoot: function() {
+//     // return house.price / house.squareFeet;
+//     return this.price / this.squareFeet;
+//   }
+// };
+
+// console.log(house.price, house.getPricePerSquareFoot());
+
+// Problem #5
+//What is variable and function hoisting?
+//when they are executed or recognized at the top of the scope by the jvasScript compiller (not defined yet though)
+
+// let color; //this is a psuedo view of what the compiller sees under the hood, and how it hoists
+
+// console.log(color); //with be underfined
+
+// color = "blue";
+
+// console.log(color); //will be blue
+
+//With a function declaration (one that's not assgined to a variable), the entrie function will be hoisted vs a function expression that won't be
+
+console.log(foo(4, 4)); //function is hoisted
+console.log(addingNumbers(4, 4)); //entire function in the function expression not hoister
+
+function foo(num1, num2) {
+  return num1 + num2;
+}
+
+let addingNumbers = function foo(num1, num2) {
+  return num1 + num2;
 };
 
-console.log(house.price, house.getPricePerSquareFoot());
+//Variables and funcitons are hoisted to the top of the scope in which they are declared in (depending on the key word used (let and const are block scoped and var is function scoped))
+function getTotal() {
+  console.log(multiplier);
+  console.log(total);
+
+  let total = 0;
+
+  for (var i = 0; i < 10; i++) {
+    let valueToAdd = i;
+    var multiplier = 2;
+    total += valueToAdd * multiplier;
+  }
+
+  return total;
+}
+
+getTotal();
+
+// what JS does/see under the hood!
+
+function getTotal() {
+  let total;
+  var multiplier;
+
+  total = 0;
+
+  for (var i = 0; i < 10; i++) {
+    let valueToAdd;
+
+    valueToAdd = i;
+    multiplier = 2;
+    total += valueToAdd * multiplier;
+  }
+
+  return total;
+}
+
+getTotal();
