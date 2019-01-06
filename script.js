@@ -131,66 +131,85 @@ console.log("howdy partner");
 
 // console.log(house.price, house.getPricePerSquareFoot());
 
-// Problem #5
-//What is variable and function hoisting?
-//when they are executed or recognized at the top of the scope by the jvasScript compiller (not defined yet though)
+// // Problem #5
+// //What is variable and function hoisting?
+// //when they are executed or recognized at the top of the scope by the jvasScript compiller (not defined yet though)
 
-// let color; //this is a psuedo view of what the compiller sees under the hood, and how it hoists
+// // let color; //this is a psuedo view of what the compiller sees under the hood, and how it hoists
 
-// console.log(color); //with be underfined
+// // console.log(color); //with be underfined
 
-// color = "blue";
+// // color = "blue";
 
-// console.log(color); //will be blue
+// // console.log(color); //will be blue
 
-//With a function declaration (one that's not assgined to a variable), the entrie function will be hoisted vs a function expression that won't be
+// //With a function declaration (one that's not assgined to a variable), the entrie function will be hoisted vs a function expression that won't be
 
-console.log(foo(4, 4)); //function is hoisted
-console.log(addingNumbers(4, 4)); //entire function in the function expression not hoister
+// console.log(foo(4, 4)); //function is hoisted
+// console.log(addingNumbers(4, 4)); //entire function in the function expression not hoister
 
-function foo(num1, num2) {
-  return num1 + num2;
-}
+// function foo(num1, num2) {
+//   return num1 + num2;
+// }
 
-let addingNumbers = function foo(num1, num2) {
-  return num1 + num2;
+// let addingNumbers = function foo(num1, num2) {
+//   return num1 + num2;
+// };
+
+// //Variables and funcitons are hoisted to the top of the scope in which they are declared in (depending on the key word used (let and const are block scoped and var is function scoped))
+// function getTotal() {
+//   console.log(multiplier);
+//   console.log(total);
+
+//   let total = 0;
+
+//   for (var i = 0; i < 10; i++) {
+//     let valueToAdd = i;
+//     var multiplier = 2;
+//     total += valueToAdd * multiplier;
+//   }
+
+//   return total;
+// }
+
+// getTotal();
+
+// // what JS does/see under the hood!
+
+// function getTotal() {
+//   let total;
+//   var multiplier;
+
+//   total = 0;
+
+//   for (var i = 0; i < 10; i++) {
+//     let valueToAdd;
+
+//     valueToAdd = i;
+//     multiplier = 2;
+//     total += valueToAdd * multiplier;
+//   }
+
+//   return total;
+// }
+
+// getTotal();
+
+// Problem #6
+//what will print? blue, blue, underfined, underfined
+this.color = "Red";
+
+var myCar = {
+  color: "Blue",
+  logColor: function() {
+    var self = this; //purpose is to store a reference to certain scope
+    console.log("In logColor - this.color: " + this.color);
+    console.log("In logColor - self.color: " + self.color);
+    (function() {
+      console.log("In IIFE - this.color: " + this.color); //has no function reference but still referes to the global scope
+      console.log("In IIFE - self.color: " + self.color);
+    })();
+  }
 };
 
-//Variables and funcitons are hoisted to the top of the scope in which they are declared in (depending on the key word used (let and const are block scoped and var is function scoped))
-function getTotal() {
-  console.log(multiplier);
-  console.log(total);
-
-  let total = 0;
-
-  for (var i = 0; i < 10; i++) {
-    let valueToAdd = i;
-    var multiplier = 2;
-    total += valueToAdd * multiplier;
-  }
-
-  return total;
-}
-
-getTotal();
-
-// what JS does/see under the hood!
-
-function getTotal() {
-  let total;
-  var multiplier;
-
-  total = 0;
-
-  for (var i = 0; i < 10; i++) {
-    let valueToAdd;
-
-    valueToAdd = i;
-    multiplier = 2;
-    total += valueToAdd * multiplier;
-  }
-
-  return total;
-}
-
-getTotal();
+myCar.logColor();
