@@ -296,14 +296,41 @@ outerFunc("param two");
 // console.log("instance 2: ", instanceTwo());
 // console.log("instance 2: ", instanceTwo());
 
-//Problem #11
-//what is the value of x and y when logged out?
-// y logs to 200 because of it's global scope, but x is undefined because of it's IIFE function scope
-(function() {
-  var x = (y = 200);
-  // var x = y IIFE scope
-  // y = 200 /global scope
-})();
+// //Problem #11
+// //what is the value of x and y when logged out?
+// // y logs to 200 because of it's global scope, but x is undefined because of it's IIFE function scope
+// (function() {
+//   var x = (y = 200);
+//   // var x = y IIFE scope
+//   // y = 200 /global scope
+// })();
 
-console.log("y: ", y);
-console.log("x: ", x);
+// console.log("y: ", y);
+// console.log("x: ", x);
+
+//Problem #11
+//Describe the JS call() and apply() methods (how do they function, what arguments do they take, and how are they different?)
+//basically the same thing and both use another objects method, but apply passes the aurguments in via array
+
+const car1 = {
+  brand: "Porsche",
+  getCarDescription: function(cost, year, color) {
+    console.log(
+      `This car is a ${
+        this.brand
+      }. The price is $${cost}. The year is ${year}. The color is ${color}.\n`
+    );
+  }
+};
+
+const car2 = {
+  brand: "Lamborghini"
+};
+
+const car3 = {
+  brand: "Ford"
+};
+
+car1.getCarDescription(80000, 2010, "blue");
+car1.getCarDescription.call(car2, 200000, 2013, "yellow");
+car1.getCarDescription.apply(car3, [35000, 2012, "black"]);
