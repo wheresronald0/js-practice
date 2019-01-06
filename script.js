@@ -218,14 +218,25 @@ console.log("howdy partner");
 // == vs ===
 // === is more strict and compare data types, and == converts data into the same type and then compares
 
-Problem #8
-// What is logged to the console when the logNumber function is ran?
-//underfined becasue num has been hoisted but no value is assigned yet. If the 2nd num var is deleted, the fuinction will return 50 becuase it will look to the parent for scope
-var num = 50;
+// //Problem #8
+// // What is logged to the console when the logNumber function is ran?
+// //underfined becasue num has been hoisted but no value is assigned yet. If the 2nd num var is deleted, the fuinction will return 50 becuase it will look to the parent for scope
+// var num = 50;
 
-function logNumber() {
-  console.log(num);
-  var num = 100;
-}
+// function logNumber() {
+//   console.log(num);
+//   var num = 100;
+// }
 
-logNumber();
+// logNumber();
+
+Problem #9
+//'use strict' what does it do and why use it
+//enforces stricter parsing and error handling in my code (helps with debugging when you have to var, const, let). Allows us to fail fast and fail loudly
+
+// city = "London"; //declared global variable without using var, let or const
+// console.log(city);
+
+("use strict");
+city = "London"; //now returns undefined because it limits the create of global variable
+console.log(city);
