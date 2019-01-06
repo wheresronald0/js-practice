@@ -195,21 +195,25 @@ console.log("howdy partner");
 
 // getTotal();
 
-// Problem #6
-//what will print? blue, blue, underfined, underfined
-this.color = "Red";
+// // Problem #6
+// //what will print? blue, blue, underfined, underfined
+// this.color = "Red";
 
-var myCar = {
-  color: "Blue",
-  logColor: function() {
-    var self = this; //purpose is to store a reference to certain scope
-    console.log("In logColor - this.color: " + this.color);
-    console.log("In logColor - self.color: " + self.color);
-    (function() {
-      console.log("In IIFE - this.color: " + this.color); //has no function reference but still referes to the global scope
-      console.log("In IIFE - self.color: " + self.color);
-    })();
-  }
-};
+// var myCar = {
+//   color: "Blue",
+//   logColor: function() {
+//     var self = this; //purpose is to store a reference to certain scope
+//     console.log("In logColor - this.color: " + this.color);
+//     console.log("In logColor - self.color: " + self.color);
+//     (function() {
+//       console.log("In IIFE - this.color: " + this.color); //has no function reference but still referes to the global scope
+//       console.log("In IIFE - self.color: " + self.color);
+//     })();
+//   }
+// };
 
-myCar.logColor();
+// myCar.logColor();
+
+Problem #7
+== vs ===
+=== is more strict and compare data types, and == converts data into the same type and then compares
