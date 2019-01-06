@@ -273,25 +273,37 @@ outerFunc("param two");
 // console.log(travelTimeToDCtoNYC(60)); // you can then just make adjustments to speed without having to type distance over and over again
 // console.log(travelTimeToDCtoNYC(80));
 
-Problem #11
-//write a function that keeps track for how may times it was called, and returns that number
+// //Problem #11
+// //write a function that keeps track for how may times it was called, and returns that number
 
-function myFunc() {
-  let count = 0;
+// function myFunc() {
+//   let count = 0;
 
-  return function() {
-    count++;
-    return count;
-  };
-}
-console.log(myFunc());
+//   return function() {
+//     count++;
+//     return count;
+//   };
+// }
+// console.log(myFunc());
 
-const instanceOne = myFunc(); //you have to make an instance for the count to be tracked
-const instanceTwo = myFunc();
+// const instanceOne = myFunc(); //you have to make an instance for the count to be tracked
+// const instanceTwo = myFunc();
 
-console.log("instance 1: ", instanceOne());
-console.log("instance 1: ", instanceOne());
-console.log("instance 1: ", instanceOne());
-console.log("instance 2: ", instanceTwo());
-console.log("instance 2: ", instanceTwo());
-console.log("instance 2: ", instanceTwo());
+// console.log("instance 1: ", instanceOne());
+// console.log("instance 1: ", instanceOne());
+// console.log("instance 1: ", instanceOne());
+// console.log("instance 2: ", instanceTwo());
+// console.log("instance 2: ", instanceTwo());
+// console.log("instance 2: ", instanceTwo());
+
+//Problem #11
+//what is the value of x and y when logged out?
+// y logs to 200 because of it's global scope, but x is undefined because of it's IIFE function scope
+(function() {
+  var x = (y = 200);
+  // var x = y IIFE scope
+  // y = 200 /global scope
+})();
+
+console.log("y: ", y);
+console.log("x: ", x);
