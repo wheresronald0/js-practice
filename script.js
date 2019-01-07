@@ -577,15 +577,30 @@ console.log("howdy partner");
 
 // console.log(data2);
 
-//Problem #25
-//what's logged out?
-//400- it's wonkey but the b object is being converted to string '[object, object] (a key can only be a string)
-const a = {};
-const b = { name: "b" };
-const c = { name: "c" };
+// //Problem #25
+// //what's logged out?
+// //400- it's wonkey but the b object is being converted to string '[object, object] (a key can only be a string)
+// const a = {};
+// const b = { name: "b" };
+// const c = { name: "c" };
 
-a[b] = 200;
-a[c] = 400;
+// a[b] = 200;
+// a[c] = 400;
 
-console.log(a[b]);
-console.log(a);
+// console.log(a[b]);
+// console.log(a);
+
+//Problem #26
+//what's looged?
+//10 because the x function is hoisted and negates x's (in the y function) global scope and keeps it's funtion scope
+var x = 10;
+
+function y() {
+  x = 100;
+  return;
+  function x() {}
+}
+
+y();
+
+console.log(x);
