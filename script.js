@@ -483,24 +483,36 @@ console.log("howdy partner");
 
 // console.log(getTripDistance(" in total"));
 
-//Problem #19
-//what is logged out, true or false
-//false for both because both user reference different instance of an object and can never be equal even though the data value is the same
-const user1 = {
-  name: "Jordan",
-  age: 28
-};
-
-// const user2 = {
-//   name: 'Jordan',
-//   age: 28,
+// //Problem #19
+// //what is logged out, true or false
+// //false for both because both user reference different instance of an object and can never be equal even though the data value is the same
+// const user1 = {
+//   name: "Jordan",
+//   age: 28
 // };
 
-const user2 = user1; //would be true true becuase both user are now refering to the same object!
-console.log(user1 == user2);
-console.log(user1 === user2);
-console.log(JSON.stringify(user1) === JSON.stringify(user2)); //converts it to a JSON object and then to a string to compare values and not references
+// // const user2 = {
+// //   name: 'Jordan',
+// //   age: 28,
+// // };
 
-//array would retunr false too because it's an object and you're referencing different instances in this example
-console.log([] === []);
-console.log(JSON.stringify([]) === JSON.stringify([]));
+// const user2 = user1; //would be true true becuase both user are now refering to the same object!
+// console.log(user1 == user2);
+// console.log(user1 === user2);
+// console.log(JSON.stringify(user1) === JSON.stringify(user2)); //converts it to a JSON object and then to a string to compare values and not references
+
+// //array would retunr false too because it's an object and you're referencing different instances in this example
+// console.log([] === []);
+// console.log(JSON.stringify([]) === JSON.stringify([]));
+
+//Problem #20
+//what is logged out for each
+var arr1 = []; //jsut return the empy array
+var arr2 = new Array(50); //because it's on numer, it returns a array with 50 empty spots. If it was one string it would return an array with that one string
+var arr3 = new Array(1, 2, "three", 4, "five");
+var arr4 = new Array([1, 2, 3, 4, 5]); //returns nested array
+
+console.log("arr1: ", arr1);
+console.log("arr2: ", arr2);
+console.log("arr3: ", arr3);
+console.log("arr4: ", arr4);
