@@ -561,18 +561,31 @@ console.log("howdy partner");
 
 // console.log(person1); //Kyle and 30 because they are both now referencing the same object
 
-//Problem #24
-//what will be looged?
-//return an array containing smith
-const data1 = "Jordan Smith";
+// //Problem #24
+// //what will be looged?
+// //return an array containing smith
+// const data1 = "Jordan Smith";
 
-const data2 = [].filter.call(data1, function(elem, index) {
-  //calback function that all filter methods have, with element and index arguments
-  //Accessing the array method this way ([].filter) is the same as using Array.prototype.filter
-  return index > 6; //evaluating for true/false- if it evaulates to tru it's placed in the new array
-});
+// const data2 = [].filter.call(data1, function(elem, index) {
+//   //calback function that all filter methods have, with element and index arguments
+//   //Accessing the array method this way ([].filter) is the same as using Array.prototype.filter
+//   return index > 6; //evaluating for true/false- if it evaulates to tru it's placed in the new array
+// });
 
-// only use 'read-only' methods: filter, forEach, map, some, every, etc.
-// cannot use: push, pop, splice, shift, reverse, etc.
+// // only use 'read-only' methods: filter, forEach, map, some, every, etc.
+// // cannot use: push, pop, splice, shift, reverse, etc.
 
-console.log(data2);
+// console.log(data2);
+
+//Problem #25
+//what's logged out?
+//400- it's wonkey but the b object is being converted to string '[object, object] (a key can only be a string)
+const a = {};
+const b = { name: "b" };
+const c = { name: "c" };
+
+a[b] = 200;
+a[c] = 400;
+
+console.log(a[b]);
+console.log(a);
