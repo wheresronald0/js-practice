@@ -505,14 +505,27 @@ console.log("howdy partner");
 // console.log([] === []);
 // console.log(JSON.stringify([]) === JSON.stringify([]));
 
-//Problem #20
-//what is logged out for each
-var arr1 = []; //jsut return the empy array
-var arr2 = new Array(50); //because it's on numer, it returns a array with 50 empty spots. If it was one string it would return an array with that one string
-var arr3 = new Array(1, 2, "three", 4, "five");
-var arr4 = new Array([1, 2, 3, 4, 5]); //returns nested array
+// //Problem #20
+// //what is logged out for each
+// var arr1 = []; //jsut return the empy array
+// var arr2 = new Array(50); //because it's on numer, it returns a array with 50 empty spots. If it was one string it would return an array with that one string
+// var arr3 = new Array(1, 2, "three", 4, "five");
+// var arr4 = new Array([1, 2, 3, 4, 5]); //returns nested array
 
-console.log("arr1: ", arr1);
-console.log("arr2: ", arr2);
-console.log("arr3: ", arr3);
-console.log("arr4: ", arr4);
+// console.log("arr1: ", arr1);
+// console.log("arr2: ", arr2);
+// console.log("arr3: ", arr3);
+// console.log("arr4: ", arr4);
+
+//Problem #21
+//what looges out?
+
+console.log([10, 20, 30, 40, 50].indexOf(30));
+console.log([{ name: "Pam" }, { name: "Kent" }].indexOf({ name: "Kent" })); //-1 becasue objects are passed by reference and not by value, so it can't find the "Kent" object in the array
+console.log("hello world".indexOf("o")); //4 - this is the strin indexof and not the array in
+console.log([[1], [2], [3], [4]].indexOf([2])); //-1 beacuse two different arrays are never the same
+
+const myArray = [5];
+const anotherArray = myArray;
+console.log([[1], [2], [3], [4], myArray].indexOf(myArray)); //4 becasue now were referencing the same underlying object, so they're equal
+console.log([[1], [2], [3], [4], myArray].indexOf(anotherArray)); //4 becasue now were referencing the same underlying object, so they're equal
