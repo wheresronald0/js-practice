@@ -335,21 +335,48 @@ outerFunc("param two");
 // car1.getCarDescription.call(car2, 200000, 2013, "yellow");
 // car1.getCarDescription.apply(car3, [35000, 2012, "black"]);
 
-//Problem #12
-//what will be logged out?
-//1,2,3,4,5,6,7,8, passing by reference, referencing the same array value (same peice of data)
+// //Problem #12
+// //what will be logged out?
+// //1,2,3,4,5,6,7,8, passing by reference, referencing the same array value (same peice of data)
 
+// // const list1 = [1, 2, 3, 4, 5];
+// // const list2 = list1;
+
+// // list1.push(6, 7, 8);
+
+// // console.log(list2);
+
+// //make a list that's equla to list1 but isn't affected by changes to list one
 // const list1 = [1, 2, 3, 4, 5];
-// const list2 = list1;
-
+// // const list2 = list1.slice();// or use .concat:
+// const list2 = list1.concat([]);
 // list1.push(6, 7, 8);
-
+// console.log(list1);
 // console.log(list2);
 
-//make a list that's equla to list1 but isn't affected by changes to list one
-const list1 = [1, 2, 3, 4, 5];
-// const list2 = list1.slice();// or use .concat:
-const list2 = list1.concat([]);
-list1.push(6, 7, 8);
-console.log(list1);
-console.log(list2);
+//Problem #13
+// get total with single(singly) invocation and double(doubly) invocation (currying)
+// function getTotal(num1) {
+//   return function(num2) {
+//     return num1 + num2;
+//   };
+// }
+
+// getTotal(10, 20);
+// getTotal(10)(20);
+
+//if you wanted a function that handle both:
+function getTotal() {
+  var args = Array.prototype.slice.call(arguments); // arguments is an object that acts like an array
+  console.log(args);
+
+  if (args.length === 2) {
+    return args[0] + args[1];
+  } else if (args.length === 1) {
+    return function(num2) {
+      return args[0] + num2;
+    };
+  }
+}
+console.log(getTotal(10, 20));
+console.log(getTotal(10)(20));
