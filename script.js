@@ -590,17 +590,40 @@ console.log("howdy partner");
 // console.log(a[b]);
 // console.log(a);
 
-//Problem #26
-//what's looged?
-//10 because the x function is hoisted and negates x's (in the y function) global scope and keeps it's funtion scope
-var x = 10;
+// //Problem #26
+// //what's looged?
+// //10 because the x function is hoisted and negates x's (in the y function) global scope and keeps it's funtion scope
+// var x = 10;
 
-function y() {
-  x = 100;
-  return;
-  function x() {}
-}
+// function y() {
+//   x = 100;
+//   return;
+//   function x() {}
+// }
 
-y();
+// y();
 
-console.log(x);
+// console.log(x);
+
+//Problem #27
+//what will be looged out?
+const account1 = {
+  name: "Jen",
+  totalAmount: 5000,
+  deductAmount: function(amount) {
+    this.totalAmount -= amount;
+    return "Amount in account: " + this.totalAmount;
+  }
+};
+
+const account2 = {
+  name: "James",
+  totalAmount: 8000
+};
+
+const withdrawFromAccount = function(amount) {
+  return account1.deductAmount.bind(account2, amount);
+};
+
+console.log(withdrawFromAccount(500)()); //7500
+console.log(withdrawFromAccount(200)()); //7300 because the value is stored as 7500 and no loger 7800
