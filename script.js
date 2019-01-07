@@ -464,21 +464,43 @@ console.log("howdy partner");
 // console.log(Array.isArray([]));
 // console.log({} instanceof Array);
 
-//Problem #18
-//descripe what the bind method is, and what parameters it uses
-//it's a way to bind an instance to an object scope vs global scope
-this.distance = 10000;
-const roadTrip1 = {
-  distance: 3000,
-  getDistance: function(unit, caption) {
-    return this.distance + unit + caption;
-  }
+// //Problem #18
+// //descripe what the bind method is, and what parameters it uses
+// //it's a way to bind an instance to an object scope vs global scope
+// this.distance = 10000;
+// const roadTrip1 = {
+//   distance: 3000,
+//   getDistance: function(unit, caption) {
+//     return this.distance + unit + caption;
+//   }
+// };
+
+// const roadTrip2 = {
+//   distance: 5000
+// };
+
+// const getTripDistance = roadTrip1.getDistance.bind(roadTrip2, "km"); //you can pass in additional arguments as static, or pass them in when you call the funtion as dynamic
+
+// console.log(getTripDistance(" in total"));
+
+//Problem #19
+//what is logged out, true or false
+//false for both because both user reference different instance of an object and can never be equal even though the data value is the same
+const user1 = {
+  name: "Jordan",
+  age: 28
 };
 
-const roadTrip2 = {
-  distance: 5000
-};
+// const user2 = {
+//   name: 'Jordan',
+//   age: 28,
+// };
 
-const getTripDistance = roadTrip1.getDistance.bind(roadTrip2, "km"); //you can pass in additional arguments as static, or pass them in when you call the funtion as dynamic
+const user2 = user1; //would be true true becuase both user are now refering to the same object!
+console.log(user1 == user2);
+console.log(user1 === user2);
+console.log(JSON.stringify(user1) === JSON.stringify(user2)); //converts it to a JSON object and then to a string to compare values and not references
 
-console.log(getTripDistance(" in total"));
+//array would retunr false too because it's an object and you're referencing different instances in this example
+console.log([] === []);
+console.log(JSON.stringify([]) === JSON.stringify([]));
