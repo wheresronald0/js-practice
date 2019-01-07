@@ -400,20 +400,55 @@ outerFunc("param two");
 //   }
 // };
 
-//Problem #15
-//when this code is ran, what order will the four numbers be logged out in?
-//1,4,3,2
-function logNumbers() {
-  console.log(1);
-  setTimeout(function() {
-    //this goes into the event loop que (click event Ajax calls)
-    console.log(2);
-  }, 1000);
-  setTimeout(function() {
-    //this goes into the event loop que
-    console.log(3);
-  }, 0);
-  console.log(4);
-}
+// //Problem #15
+// //when this code is ran, what order will the four numbers be logged out in?
+// //1,4,3,2
+// function logNumbers() {
+//   console.log(1);
+//   setTimeout(function() {
+//     //this goes into the event loop que (click event Ajax calls)
+//     console.log(2);
+//   }, 1000);
+//   setTimeout(function() {
+//     //this goes into the event loop que
+//     console.log(3);
+//   }, 0);
+//   console.log(4);
+// }
 
-logNumbers();
+// logNumbers();
+
+//Problem #15
+//List and decribe 3 different ways of creating an object in JS
+//onbject literal syntax - assign it to a var
+const foo = {
+  name: "Bar"
+};
+console.log(foo);
+// new keyword and Object constructor
+const student = new Object(); //then you can just declare KVP's
+student.name = "john";
+student.age = 12;
+student.classes = ["english", "algebra"];
+student.getClasses = function() {
+  return this.classes;
+};
+console.log(student);
+console.log(student.getClasses());
+
+//the 3rd way is through a constructor:
+function Car(make, model, color) {
+  this.make = make;
+  this.model = model;
+  this.color = color;
+  // this.getColor = function() {
+  //   return this.color;
+  //};
+}
+Car.prototype.getColor = function() {
+  return this.color;
+};
+
+const ronsCar = new Car("honda", "civic", "blue");
+console.log(ronsCar);
+console.log(ronsCar.getColor());
