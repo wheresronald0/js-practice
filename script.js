@@ -529,3 +529,11 @@ const myArray = [5];
 const anotherArray = myArray;
 console.log([[1], [2], [3], [4], myArray].indexOf(myArray)); //4 becasue now were referencing the same underlying object, so they're equal
 console.log([[1], [2], [3], [4], myArray].indexOf(anotherArray)); //4 becasue now were referencing the same underlying object, so they're equal
+
+//Problem #22
+//is it true or false
+console.log(900.9 === 300.3 * 3); //false because JS calculates decimals strange and rounds the last digit up/down
+//on fix would be... fix the decimal to 2 places and use the built in "number function" to convert back toa number, since toFixed convert it to a string
+console.log(900.9 === Number((300.3 * 3).toFixed(2)));
+//you can also muliply by 10 and then divide the answer by 10
+console.log(900.9 === (300.3 * 10 * 3) / 10);
