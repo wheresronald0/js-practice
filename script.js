@@ -354,29 +354,48 @@ outerFunc("param two");
 // console.log(list1);
 // console.log(list2);
 
-//Problem #13
-// get total with single(singly) invocation and double(doubly) invocation (currying)
-// function getTotal(num1) {
-//   return function(num2) {
-//     return num1 + num2;
-//   };
+// //Problem #13
+// // get total with single(singly) invocation and double(doubly) invocation (currying)
+// // function getTotal(num1) {
+// //   return function(num2) {
+// //     return num1 + num2;
+// //   };
+// // }
+
+// // getTotal(10, 20);
+// // getTotal(10)(20);
+
+// //if you wanted a function that handle both:
+// function getTotal() {
+//   var args = Array.prototype.slice.call(arguments); // arguments is an object that acts like an array
+//   console.log(args);
+
+//   if (args.length === 2) {
+//     return args[0] + args[1];
+//   } else if (args.length === 1) {
+//     return function(num2) {
+//       return args[0] + num2;
+//     };
+//   }
 // }
+// console.log(getTotal(10, 20));
+// console.log(getTotal(10)(20));
 
-// getTotal(10, 20);
-// getTotal(10)(20);
+//Problem #14
+//Describe what JSON format is: JSON "javascript object notation" is a simplistic lightweight format for data transfer
+//Delete the data types not permitted in JSON.
+//Replace placeholder-text with the corresponding data type, properly formatted as JSON.
 
-//if you wanted a function that handle both:
-function getTotal() {
-  var args = Array.prototype.slice.call(arguments); // arguments is an object that acts like an array
-  console.log(args);
-
-  if (args.length === 2) {
-    return args[0] + args[1];
-  } else if (args.length === 1) {
-    return function(num2) {
-      return args[0] + num2;
-    };
+// prettier-ignore
+const myJsonObj = { //all keys are strings
+  "myString": "my name", //must be double quotes
+  "myNumber": 2,
+  "myNull": null,
+  "myBoolean": false,
+  // myUndefined: [undefined], //undefined not allowed
+  "myArray": [1, 3, 3],
+  // myFunction: [some function], //no functions allowed as it's not a computing language
+  "myObject": {
+    "myNumber": 3
   }
-}
-console.log(getTotal(10, 20));
-console.log(getTotal(10)(20));
+};
