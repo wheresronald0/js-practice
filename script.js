@@ -540,23 +540,39 @@ console.log("howdy partner");
 // //you can also muliply by 10 and then divide the answer by 10
 // console.log(900.9 === (300.3 * 10 * 3) / 10);
 
-//Problem #23
-//What is logged?
-var string1 = "Tampa";
-var string2 = string1;
-string1 = "Venice";
+// //Problem #23
+// //What is logged?
+// var string1 = "Tampa";
+// var string2 = string1;
+// string1 = "Venice";
 
-console.log(string2); //tampa bescuase strings pass value, and the vlaue had already been set
+// console.log(string2); //tampa bescuase strings pass value, and the vlaue had already been set
 
-////////////////////////////////
+// ////////////////////////////////
 
-var person1 = {
-  name: "Alex",
-  age: 30
-};
+// var person1 = {
+//   name: "Alex",
+//   age: 30
+// };
 
-var person2 = person1;
+// var person2 = person1;
 
-person2.name = "Kyle";
+// person2.name = "Kyle";
 
-console.log(person1); //Kyle and 30 because they are both now referencing the same object
+// console.log(person1); //Kyle and 30 because they are both now referencing the same object
+
+//Problem #24
+//what will be looged?
+//return an array containing smith
+const data1 = "Jordan Smith";
+
+const data2 = [].filter.call(data1, function(elem, index) {
+  //calback function that all filter methods have, with element and index arguments
+  //Accessing the array method this way ([].filter) is the same as using Array.prototype.filter
+  return index > 6; //evaluating for true/false- if it evaulates to tru it's placed in the new array
+});
+
+// only use 'read-only' methods: filter, forEach, map, some, every, etc.
+// cannot use: push, pop, splice, shift, reverse, etc.
+
+console.log(data2);
