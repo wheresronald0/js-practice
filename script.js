@@ -91,29 +91,29 @@ console.log("howdy partner");
 //   };
 // }
 
-// Problem #3
-//What is a closure, and code out an example of your own
-//it's an inner function that has access to vars of the inner, outer and global function, used to protect local scope
+// // Problem #3
+// //What is a closure, and code out an example of your own
+// //it's an inner function that has access to vars of the inner, outer and global function, used to protect local scope
 
-const globalVariable = "global var";
+// const globalVariable = "global var";
 
-function outerFunc(param1) {
-  const variable1 = "var one";
+// function outerFunc(param1) {
+//   const variable1 = "var one";
 
-  function innerFunc(param2) {
-    const variable2 = "var two";
+//   function innerFunc(param2) {
+//     const variable2 = "var two";
 
-    console.log("globalVariable: ", globalVariable);
-    console.log("variable1: ", variable1);
-    console.log("variable2: ", variable2);
-    console.log("param1: ", param1);
-    console.log("param2: ", param2);
-  }
+//     console.log("globalVariable: ", globalVariable);
+//     console.log("variable1: ", variable1);
+//     console.log("variable2: ", variable2);
+//     console.log("param1: ", param1);
+//     console.log("param2: ", param2);
+//   }
 
-  innerFunc("param one");
-}
+//   innerFunc("param one");
+// }
 
-outerFunc("param two");
+// outerFunc("param two");
 
 // // Problem #4
 // //What is the 'this' keyword and how is it used?
@@ -453,13 +453,32 @@ outerFunc("param two");
 // console.log(ronsCar);
 // console.log(ronsCar.getColor());
 
-//Problem #17
-//what is logged out for each? obj, underfined, obj, obj (basically everything in JS is an obj except for undefined)
-console.log(typeof null);
-console.log(typeof undefined);
-console.log(typeof {});
-console.log(typeof []);
+// //Problem #17
+// //what is logged out for each? obj, underfined, obj, obj (basically everything in JS is an obj except for undefined)
+// console.log(typeof null);
+// console.log(typeof undefined);
+// console.log(typeof {});
+// console.log(typeof []);
 
-//what if we wanted to find out if something was an array (typeof won't tell us, becasue an array is an obj):
-console.log(Array.isArray([]));
-console.log({} instanceof Array);
+// //what if we wanted to find out if something was an array (typeof won't tell us, becasue an array is an obj):
+// console.log(Array.isArray([]));
+// console.log({} instanceof Array);
+
+//Problem #18
+//descripe what the bind method is, and what parameters it uses
+//it's a way to bind an instance to an object scope vs global scope
+this.distance = 10000;
+const roadTrip1 = {
+  distance: 3000,
+  getDistance: function(unit, caption) {
+    return this.distance + unit + caption;
+  }
+};
+
+const roadTrip2 = {
+  distance: 5000
+};
+
+const getTripDistance = roadTrip1.getDistance.bind(roadTrip2, "km"); //you can pass in additional arguments as static, or pass them in when you call the funtion as dynamic
+
+console.log(getTripDistance(" in total"));
