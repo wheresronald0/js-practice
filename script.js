@@ -418,37 +418,48 @@ outerFunc("param two");
 
 // logNumbers();
 
-//Problem #15
-//List and decribe 3 different ways of creating an object in JS
-//onbject literal syntax - assign it to a var
-const foo = {
-  name: "Bar"
-};
-console.log(foo);
-// new keyword and Object constructor
-const student = new Object(); //then you can just declare KVP's
-student.name = "john";
-student.age = 12;
-student.classes = ["english", "algebra"];
-student.getClasses = function() {
-  return this.classes;
-};
-console.log(student);
-console.log(student.getClasses());
+// //Problem #16
+// //List and decribe 3 different ways of creating an object in JS
+// //onbject literal syntax - assign it to a var
+// const foo = {
+//   name: "Bar"
+// };
+// console.log(foo);
+// // new keyword and Object constructor
+// const student = new Object(); //then you can just declare KVP's
+// student.name = "john";
+// student.age = 12;
+// student.classes = ["english", "algebra"];
+// student.getClasses = function() {
+//   return this.classes;
+// };
+// console.log(student);
+// console.log(student.getClasses());
 
-//the 3rd way is through a constructor:
-function Car(make, model, color) {
-  this.make = make;
-  this.model = model;
-  this.color = color;
-  // this.getColor = function() {
-  //   return this.color;
-  //};
-}
-Car.prototype.getColor = function() {
-  return this.color;
-};
+// //the 3rd way is through a constructor:
+// function Car(make, model, color) {
+//   this.make = make;
+//   this.model = model;
+//   this.color = color;
+//   // this.getColor = function() {
+//   //   return this.color;
+//   //};
+// }
+// Car.prototype.getColor = function() {
+//   return this.color;
+// };
 
-const ronsCar = new Car("honda", "civic", "blue");
-console.log(ronsCar);
-console.log(ronsCar.getColor());
+// const ronsCar = new Car("honda", "civic", "blue");
+// console.log(ronsCar);
+// console.log(ronsCar.getColor());
+
+//Problem #17
+//what is logged out for each? obj, underfined, obj, obj (basically everything in JS is an obj except for undefined)
+console.log(typeof null);
+console.log(typeof undefined);
+console.log(typeof {});
+console.log(typeof []);
+
+//what if we wanted to find out if something was an array (typeof won't tell us, becasue an array is an obj):
+console.log(Array.isArray([]));
+console.log({} instanceof Array);
