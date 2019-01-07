@@ -517,23 +517,46 @@ console.log("howdy partner");
 // console.log("arr3: ", arr3);
 // console.log("arr4: ", arr4);
 
-//Problem #21
-//what looges out?
+// //Problem #21
+// //what looges out?
 
-console.log([10, 20, 30, 40, 50].indexOf(30));
-console.log([{ name: "Pam" }, { name: "Kent" }].indexOf({ name: "Kent" })); //-1 becasue objects are passed by reference and not by value, so it can't find the "Kent" object in the array
-console.log("hello world".indexOf("o")); //4 - this is the strin indexof and not the array in
-console.log([[1], [2], [3], [4]].indexOf([2])); //-1 beacuse two different arrays are never the same
+// console.log([10, 20, 30, 40, 50].indexOf(30));
+// console.log([{ name: "Pam" }, { name: "Kent" }].indexOf({ name: "Kent" })); //-1 becasue objects are passed by reference and not by value, so it can't find the "Kent" object in the array
+// console.log("hello world".indexOf("o")); //4 - this is the strin indexof and not the array in
+// console.log([[1], [2], [3], [4]].indexOf([2])); //-1 beacuse two different arrays are never the same
 
-const myArray = [5];
-const anotherArray = myArray;
-console.log([[1], [2], [3], [4], myArray].indexOf(myArray)); //4 becasue now were referencing the same underlying object, so they're equal
-console.log([[1], [2], [3], [4], myArray].indexOf(anotherArray)); //4 becasue now were referencing the same underlying object, so they're equal
+// const myArray = [5];
+// const anotherArray = myArray;
+// console.log([[1], [2], [3], [4], myArray].indexOf(myArray)); //4 becasue now were referencing the same underlying object, so they're equal
+// console.log([[1], [2], [3], [4], myArray].indexOf(anotherArray)); //4 becasue now were referencing the same underlying object, so they're equal
 
-//Problem #22
-//is it true or false
-console.log(900.9 === 300.3 * 3); //false because JS calculates decimals strange and rounds the last digit up/down
-//on fix would be... fix the decimal to 2 places and use the built in "number function" to convert back toa number, since toFixed convert it to a string
-console.log(900.9 === Number((300.3 * 3).toFixed(2)));
-//you can also muliply by 10 and then divide the answer by 10
-console.log(900.9 === (300.3 * 10 * 3) / 10);
+// //Problem #22
+// //is it true or false
+// console.log(900.9 === 300.3 * 3); //false because JS calculates decimals strange and rounds the last digit up/down
+// //on fix would be... fix the decimal to 2 places and use the built in "number function" to convert back toa number, since toFixed convert it to a string
+// console.log(900.9 === Number((300.3 * 3).toFixed(2)));
+// //tiPrecision is the same as toFixed and converts to a string
+// console.log(900.9 === Number((300.3 * 3).toPrecision(12)));
+// //you can also muliply by 10 and then divide the answer by 10
+// console.log(900.9 === (300.3 * 10 * 3) / 10);
+
+//Problem #23
+//What is logged?
+var string1 = "Tampa";
+var string2 = string1;
+string1 = "Venice";
+
+console.log(string2); //tampa bescuase strings pass value, and the vlaue had already been set
+
+////////////////////////////////
+
+var person1 = {
+  name: "Alex",
+  age: 30
+};
+
+var person2 = person1;
+
+person2.name = "Kyle";
+
+console.log(person1); //Kyle and 30 because they are both now referencing the same object
