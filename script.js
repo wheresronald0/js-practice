@@ -381,21 +381,39 @@ outerFunc("param two");
 // console.log(getTotal(10, 20));
 // console.log(getTotal(10)(20));
 
-//Problem #14
-//Describe what JSON format is: JSON "javascript object notation" is a simplistic lightweight format for data transfer
-//Delete the data types not permitted in JSON.
-//Replace placeholder-text with the corresponding data type, properly formatted as JSON.
+// //Problem #14
+// //Describe what JSON format is: JSON "javascript object notation" is a simplistic lightweight format for data transfer
+// //Delete the data types not permitted in JSON.
+// //Replace placeholder-text with the corresponding data type, properly formatted as JSON.
 
-// prettier-ignore
-const myJsonObj = { //all keys are strings
-  "myString": "my name", //must be double quotes
-  "myNumber": 2,
-  "myNull": null,
-  "myBoolean": false,
-  // myUndefined: [undefined], //undefined not allowed
-  "myArray": [1, 3, 3],
-  // myFunction: [some function], //no functions allowed as it's not a computing language
-  "myObject": {
-    "myNumber": 3
-  }
-};
+// // prettier-ignore
+// const myJsonObj = { //all keys are strings
+//   "myString": "my name", //must be double quotes
+//   "myNumber": 2,
+//   "myNull": null,
+//   "myBoolean": false,
+//   // myUndefined: [undefined], //undefined not allowed
+//   "myArray": [1, 3, 3],
+//   // myFunction: [some function], //no functions allowed as it's not a computing language
+//   "myObject": {
+//     "myNumber": 3
+//   }
+// };
+
+//Problem #15
+//when this code is ran, what order will the four numbers be logged out in?
+//1,4,3,2
+function logNumbers() {
+  console.log(1);
+  setTimeout(function() {
+    //this goes into the event loop que (click event Ajax calls)
+    console.log(2);
+  }, 1000);
+  setTimeout(function() {
+    //this goes into the event loop que
+    console.log(3);
+  }, 0);
+  console.log(4);
+}
+
+logNumbers();
